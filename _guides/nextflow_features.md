@@ -150,6 +150,12 @@ You can refer to the test data file using the following path:
 test_data = "$projectDir/data/test_data.csv"
 ```
 
+If our full path was `/home/user/project/data/test_data.csv`, then the variable
+`$projectDir` would resolve to `/home/user/project` and the variable
+`$projectDir/data/test_data.csv` would resolve to `/home/user/project/data/test_data.csv`.
+This allows us to avoid hardcoding the full path to the file and makes it easier to
+move the project to a different location without having to update the path in the config file.  
+
 ## Nextflow Config 
 
 ### params
@@ -312,6 +318,47 @@ process BOWTIE2_BUILD {
 In this example, we are using the `baseName` function to extract the base name of the genome file path. Bowtie2 requires us
 to provide the base name of the index files as an argument without the extensions. This is a common pattern in nextflow and 
 is another method that allows us to dynamically generate file names based on the name passed in the input channel tuple.
+
+## * (glob)
+
+Nextflow also supports the bash `*` glob pattern to match any number of files in a directory. For example, we could use the following
+
+```bash
+output:
+    path('*.fastq.gz')
+```
+
+The above line would instruct nextflow to match any file ending in `.fastq.gz` in the current directory and emit them in the
+output channel.
+
+You can also use the `**` to recurse through directories. For example, we could use the following:
+
+```bash
+#!/usr/bin/env nextflow
+process NCBI_DATASETS_CLI {
+    label 'process_single'
+    conda "envs/ncbidatasets_env.yml"
+
+    input:
+    tuple val(name), val(GCF)
+
+    output:
+    tuple val(name), path('dataset/**/*.fna')
+
+    shell:
+    """
+    datasets download genome accession $GCF --include genome
+    unzip ncbi_dataset.zip -d dataset/
+    """
+```
+
+The above line would instruct nextflow to match any file ending in `.fna` in the `dataset`   directory and any subdirectories
+and emit them in the output channel. This is useful in cases where processes create multiple output files in different directories or
+deeply nested directories. The above example demonstrates this by downloading a genome from the NCBI datasets CLI and emitting the 
+FASTA file in the `dataset` directory. By default, NCBI datasets CLI will download a `ncbi_dataset.zip` file with the requested files
+and we unzip it to the `dataset` directory. The files provided are in a nested directory structure, so we use the `**` glob pattern to match
+any file ending in `.fna` in the `dataset` directory and any subdirectories while avoiding hardcoding the exact path to the file.
+
 
 ## Nextflow work/ directory
 
