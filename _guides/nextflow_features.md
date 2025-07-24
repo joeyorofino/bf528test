@@ -103,6 +103,29 @@ By default, nextflow assumes the working directory is the directory where the
 main.nf file is located. This means that you can refer to files in the working
 directory using relative paths. 
 
+For example, in our main.nf, when we are using `INCLUDE` to import a module,
+we can refer to files in the working directory using relative paths. 
+
+```bash
+include "./modules/<module_name>/main.nf"
+```
+
+This assumes the working directory structure we set up above. 
+
+In each module, we can also use relative paths when referring to other files. For
+example, if we are using a conda environment, we can refer to the environment
+YML file using the following path:
+
+```bash
+
+process INDEX {
+    label 'process_high'
+    conda 'envs/star_env.yml'
+    ...
+
+}
+``` 
+
 
 ## $projectDir
 
