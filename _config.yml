@@ -60,6 +60,7 @@ defaults:
       layout: single
       sidebar:
         nav: "sidebar"
+      classes: wide
       toc: true
       toc_sticky: true  
 
@@ -71,6 +72,7 @@ defaults:
       layout: single
       sidebar:
         nav: "sidebar"
+      classes: wide
       toc: true
       toc_sticky: true  
   # _lectures

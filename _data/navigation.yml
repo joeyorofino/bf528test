@@ -17,16 +17,18 @@ sidebar:
         url: "/guides/computational_environments/"
       - title: "Requesting SCC Resources"
         url: "/guides/requesting_scc_resources/"
+      - title: "Nextflow Features"
+        url: "/guides/nextflow_features/"
   - title: "Projects"
     children:
       - title: "Project 1"
-        url: "/projects/project_1_"
+        url: "/projects/project_1_/"
       - title: "Project 2"
         url: "/projects/project_2_rnaseq/"
       - title: "Project 3"
         url: "/projects/project_3_chipseq/"
       - title: "Project 4"
-        url: "/projects/project_4_"
+        url: "/projects/project_4_/"
 
   - title: "Course Lectures"
     children:
