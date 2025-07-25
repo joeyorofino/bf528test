@@ -319,7 +319,7 @@ In this example, we are using the `baseName` function to extract the base name o
 to provide the base name of the index files as an argument without the extensions. This is a common pattern in nextflow and 
 is another method that allows us to dynamically generate file names based on the name passed in the input channel tuple.
 
-## * (glob)
+## (*) and (**) patterns
 
 Nextflow also supports the bash `*` glob pattern to match any number of files in a directory. For example, we could use the following
 

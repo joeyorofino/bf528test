@@ -13,12 +13,18 @@ main:
 sidebar:
   - title: "Guides"
     children:
+      - title: "Basic qsub scripts"
+        url: "/guides/basic_qsub_scripts/"
+      - title: "Argument Parsing"
+        url: "/guides/argument_parsing/"
       - title: "Computational Environments"
         url: "/guides/computational_environments/"
       - title: "Requesting SCC Resources"
         url: "/guides/requesting_scc_resources/"
       - title: "Nextflow Features"
         url: "/guides/nextflow_features/"
+
+
   - title: "Projects"
     children:
       - title: "Project 1"

@@ -11,29 +11,9 @@ making use of parallel computing to run independent tasks simultaneously on
 multiple computers.
 
 The compute nodes on the SCC are relatively heterogeneous and you can see an
-exact technical breakdown [here](). For operations where it is possible, we will
+exact technical breakdown [here](https://www.bu.edu/tech/support/research/computing-resources/tech-summary/). For operations where it is possible, we will
 often make use of multiple cores of a processor to speed up the computation.
 
-## The qsub command
-
-The SCC makes use of SGE queuing system to manage and schedule the execution of
-large numbers of jobs on a high-performance computing cluster. This is done
-primarily through the `qsub` command which will enable the customization of
-different directives passed to the batch system.
-
-The most commonly used directives are:
-
-`-l h_rt`: hard run time limit in hh:mm:ss format. Default, 12 hrs. 
-
-`-P`: The project to which jobs are assigned. This option is *mandatory* for all
-      users and used for accounting purposes.
-      
-`-N`: Specifies the job name. Default is the script or command name.  
-
-Other [directives]() allow jobs to request nodes with specific amounts of memory, 
-processors or even architecture. We will be making heavy use of the `-pe omp`
-directive which is primarily intended for any jobs using multiple processors on a
-single node. 
 
 ## pe omp
 
@@ -105,6 +85,10 @@ they are utilizing. While this is not as critical when working in this class (th
 scc is free), requesting the appropriate number of resources will be far more
 important when working in other settings where compute time and resources will
 be charged per usage. 
+
+## Requesting resources with Nextflow
+
+
  
 ## Managing your batch jobs on the SCC
  
@@ -150,20 +134,3 @@ use the following command:
 ```bash
 qdel -u <your-BU-userid>
 ```
-
-## nextflow log
-
-While you can use `qstat` to track your job's progress, nextflow also has built-in
-functionality that records various statistics about the processes executed by
-workflow runs. When you have a working nextflow pipeline, you may run the workflow
-using the following command to produce a single HTML report containing various
-metrics regarding the execution:
-
-```bash
-nextflow run <pipeline.nf> -with-report <file-report-name>
-```
-
-For each process in the workflow, nextflow will report various metrics including
-CPU and memory usage, job duration and I/O. Please see the nextflow documentation
-[here](https://www.nextflow.io/docs/latest/reports.html) for more information
-on this report. 
