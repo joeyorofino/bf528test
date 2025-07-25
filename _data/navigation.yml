@@ -30,7 +30,7 @@ sidebar:
   - title: "Projects"
     children:
       - title: "Project 1"
-        url: "/projects/project_1_/"
+        url: "/projects/project_1_genome_assembly/"
       - title: "Project 2"
         url: "/projects/project_2_rnaseq/"
       - title: "Project 3"
