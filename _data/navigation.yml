@@ -23,10 +23,14 @@ sidebar:
         url: "/guides/requesting_scc_resources/"
       - title: "Nextflow Basics"
         url: "/guides/nextflow_basics/"
-      - title: "Nextflow Features"
-        url: "/guides/nextflow_features/"
+      - title: "Nextflow Channels"
+        url: "/guides/nextflow_channels/"
       - title: "Nextflow Modules"
         url: "/guides/nextflow_modules/"
+      - title: "Nextflow Features"
+        url: "/guides/nextflow_features/"
+      - title: "Connecting Inputs and Outputs"
+        url: "/guides/connecting_inputs_and_outputs/"
 
 
   - title: "Projects"
