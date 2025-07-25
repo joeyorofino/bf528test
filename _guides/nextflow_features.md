@@ -126,6 +126,10 @@ process INDEX {
 }
 ``` 
 
+Note that the path is a relative path as nextflow resolves against the workflow
+launching directory (where the main.nf file is located). If we wanted to be more
+careful, we could encode the path to the environment YML file using the `$projectDir`
+variable in the nextflow.config file.
 
 ## $projectDir
 
@@ -209,10 +213,11 @@ nextflow run main.nf -profile conda,cluster
 ```
 
 This will instruct nextflow to use the pre-defined options in the `conda` and `cluster`
-profiles. These profiles specify a number of important options for how to use `conda`
-and how to submit jobs to the SCC. 
+profiles. These profiles specify a number of important options for nextlow to use
+conda and submit jobs appropriately to the SCC. 
 
-You can see the options defined in each profile by looking at the `nextflow.config` file.
+You can see the options defined in each profile by looking at the `nextflow.config` 
+file.
 
 ### Nextflow Labels
 

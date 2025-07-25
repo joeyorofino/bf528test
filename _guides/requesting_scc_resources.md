@@ -88,8 +88,63 @@ be charged per usage.
 
 ## Requesting resources with Nextflow
 
+We will be using the labels and profiles defined in the `nextflow.config` file to 
+specigy the resources we want to request for each process. You have been provided
+a few default process labels (process_low, process_medium, process_high) that will 
+request increasing amounts of resouces. You can view the exact specifications for 
+these labels in the `nextflow.config` file. 
 
- 
+For all of your nextflow processes, apply an appropriate label based on the amount
+of resources you estimate your process will require. If you are not sure, you can
+try running the process, inspecting the resources it is using during runtime, and
+adjusting the resources accordingly. 
+
+If you need, you can also add new labels to the nextflow config file to request
+additional resources. Please refer to the syntax in the config file and also the SCC 
+documentation for available hardware options [above](#commonly-used-core-memory-options-on-the-scc)
+
+For example, if you wanted to make a new label that requested 16 cores and at least 256GB
+of memory, you could add the following to the nextflow config file:
+
+```yml
+withLabel: process_high {
+                    cpus = 16
+                    clusterOptions = "-P bf528 -l mem_per_core=16G"
+                    memory = "256G"
+}
+``` 
+
+Remember to also make sure you instruct the utility or tool to make use of the
+resources you have requested. Most utilities will have flags that allow you to 
+specify the number of cores to use or the amount of memory to use.
+
+You can use the $task.cpus and $task.memory variables to specify the number of cores and 
+memory to use inside the actual nextflow process. For example, if you take the following
+process:
+
+```bash
+process INDEX {
+    label 'process_high'
+    conda 'envs/star_env.yml'
+
+    input:
+    path genome
+    path gtf
+
+    output:
+    path "star", emit: index
+
+    script:
+    """
+    mkdir star
+    STAR --runThreadN $task.cpus
+    """
+}
+```
+
+This would instruct the STAR alignment tool to use the number of cores requested by the process. It
+finds the value of $task.cpus from the label. 
+
 ## Managing your batch jobs on the SCC
  
 ### qstat
