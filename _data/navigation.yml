@@ -25,6 +25,8 @@ sidebar:
         url: "/guides/nextflow_basics/"
       - title: "Nextflow Features"
         url: "/guides/nextflow_features/"
+      - title: "Nextflow Modules"
+        url: "/guides/nextflow_modules/"
 
 
   - title: "Projects"
