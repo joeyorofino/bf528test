@@ -21,6 +21,8 @@ sidebar:
         url: "/guides/computational_environments/"
       - title: "Requesting SCC Resources"
         url: "/guides/requesting_scc_resources/"
+      - title: "Nextflow Basics"
+        url: "/guides/nextflow_basics/"
       - title: "Nextflow Features"
         url: "/guides/nextflow_features/"
 

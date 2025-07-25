@@ -251,8 +251,8 @@ process INDEX {
 ```
 
 Whenever we submit a job to the SCC, nextflow will automatically assign the 
-values defined in the label to the process. For this process align, it will
-appropriately request 4 CPUs in the qsub command. These labels will allow
+values defined in the label to the process. For this process INDEX, it will
+appropriately request 16 CPUs in the qsub command. These labels will allow
 us to dynamically request different amounts of resources for different processes
 without having to manually specify every time. This has the 
 benefit of ensuring that we are not requesting more resources than we need for 

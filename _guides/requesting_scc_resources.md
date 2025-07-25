@@ -143,7 +143,7 @@ process INDEX {
 ```
 
 This would instruct the STAR alignment tool to use the number of cores requested by the process. It
-finds the value of $task.cpus from the label. 
+finds the value of $task.cpus from the label and the values defined in the nextflow config file.
 
 ## Managing your batch jobs on the SCC
  

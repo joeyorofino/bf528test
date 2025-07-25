@@ -1,11 +1,8 @@
 ---
-title: "BF528 - Genomic Data Analysis"
 link-citations: true
 ---
 
-Welcome to the homepage of BF528
-
-**Semester: Fall 2025**
+**Semester**: Fall 2025
 
 **Meeting time:** Mon/Fri - 10:10-11:55am, Wed - 9:05-9:55am
 
