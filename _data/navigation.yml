@@ -43,8 +43,8 @@ sidebar:
         url: "/projects/project_2_rnaseq/"
       - title: "Project 3"
         url: "/projects/project_3_chipseq/"
-      - title: "Project 4"
-        url: "/projects/project_4_/"
+      - title: "Final Project"
+        url: "/projects/final_project/"
 
   - title: "Course Lectures"
     children:

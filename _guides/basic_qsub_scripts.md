@@ -3,7 +3,7 @@ title: "Basic Qsub Scripts"
 layout: single
 ---
 
-# Introduction
+# Introduction to Qsub
 
 Qsub scripts are a way to submit jobs to the SCC. `qsub` is a specific command from the
 Open Grid Engine (OGE) queueing system. There are other queueing systems available, such as Slurm,
@@ -66,7 +66,52 @@ The most commonly used directives are:
 It is important to note that you cannot change the time limit of a job once it has
 been submitted. 
 
-## Nextflow and qsub
+# Managing your batch jobs on the SCC
+ 
+## qstat
+
+Please see this [resource](https://www.bu.edu/tech/support/research/system-usage/running-jobs/tracking-jobs/) from BU SCC IT for detailed information on tracking
+your batch jobs using `qstat`
+
+After you've submitted a batch job, you will be able to check the status of any
+job by using the following command:
+
+```bash
+qstat -u <your-BU-userid>
+```
+
+To get detailed information about the resources a job is utilizing, you may use
+the following command:
+
+```bash
+qstat -j <job ID>
+```
+
+This [resource](https://www.bu.edu/tech/support/research/system-usage/running-jobs/allocating-memory-for-your-job/)
+from the BU SCC IT group describes briefly the output of the above command. One
+of the important metrics to note is the `maxvmem` output, which displays the
+maximum amount of virtual memory used during the CPU runtime of the job. This
+value should enable you to determine how much memory to request for similar
+operations on similarly sized data. 
+
+## qdel
+
+If you wish to delete a job from the queue, you may use the following command:
+
+```bash
+qdel <job-id>
+```
+
+The job ID for a specific job may be found by using the above `qstat` command
+
+If you wish to delete all of the jobs associated with your username, you may
+use the following command:
+
+```bash
+qdel -u <your-BU-userid>
+```
+
+# Nextflow and qsub
 
 For the most part, you will not need to manually use qsub scripts in your own Nextflow pipelines. 
 The profiles we will be using in this class will handle this for you. On the backend, nextflow
@@ -74,3 +119,6 @@ is submitting qsub scripts for you, and you can see some of the directives used 
 command in the `nextflow.config` file and the actual qsub script in the work/ directory the process
 executes in. See nextflow features [here](/guides/nextflow_features/#nextflow-work-directory) for 
 more information.
+
+You may use the same commands to manage and track your jobs as above as all
+nextflow processes are submitted as qsub jobs on the backend. 
