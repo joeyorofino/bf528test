@@ -88,3 +88,24 @@ of the next process expects a tuple with this structure.
 input:
 tuple val(meta), path(sorted_bam), path(sorted_bai)
 ```
+
+## Common Issues
+
+The order specified in the input is how you refer to each element of the tuple. If
+you pass a tuple as input with a different order, your variables will be mismatched.
+For example, if the input of the process looks like:
+
+```bash
+input:
+tuple val(meta), path(sorted_bam), path(sorted_bai)
+```
+
+And your input channel looks like:
+
+```bash
+[sorted.bam, sorted.bam.bai, meta]
+```
+
+When you refer to `$meta`, `$sorted_bam`, and `$sorted_bai`, nextflow will substitute
+in `sorted.bam` for `$meta`, `sorted.bam.bai` for `$sorted_bam`, and `meta` for `$sorted_bai`.
+This will likely cause an error in your downstream process. 
