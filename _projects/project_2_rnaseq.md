@@ -3,30 +3,12 @@ title: "Project 2: RNAseq"
 layout: single
 ---
 
+The projects are broken up into week-by-week sections. However, these sections
+are guidelines and not a strict timeline. Your report and project will be due
+only at the day specified on the schedule. These sections are designed to 
+fit a manageable number of tasks into each week and give you a rough timeline. 
 
-## Week 1: RNAseq
-
-## Section Links
-
-[Week 1 Overview](#week-1-overview)
-
-[Objectives](#objectives)
-
-[Create a working directory for project 1](#create-a-working-directory-for-project-1)
-
-[Locating the data](#locating-the-data)
-
-[Changes to our environment management strategy and workflow](#changes-to-our-environment-management-strategy-and-workflow)
-
-[Generating our input channels for nextflow](#generating-our-input-channels-for-nextflow)
-
-[Performing quality control](#performing-quality-control)
-
-[Generate a file containing the gene IDs and their corresponding human gene symbols](#generate-a-file-containing-the-gene-ids-and-their-corresponding-human-gene-symbols)
-
-[Generate a genome index](#generate-a-genome-index)
-
-[Week 1 Tasks Summary](#week-1-tasks-summary)
+# Week 1: RNAseq
 
 ## Week 1 Overview
 
@@ -49,30 +31,6 @@ index for alignment, and making a mapping of human ensembl IDs to gene names.
 Accept the github classroom link and clone the assignment to your student
 directory in /projectnb/bf528/students/*your_username*/. This link will be
 posted on the blackboard site for our class.
-
-## Locating the data
-
-For this first project, we have provided you with small subsets of the original
-data files. You should copy these files to the `samples/` folder in your working
-directory that you cloned. For your convenience, we have renamed the files to be
-descriptive of the samples they represent following the pattern:
-{condition}_{rep}_{readpair}.subset.fastq.gz (i.e. control_rep1_R1.subset.fastq.gz)
-
-The files are located here:
-/projectnb/bf528/materials/project-1-rnaseq/subsampled_files and there are 12
-total files. Remember that paired end reads are typically used together as both
-the _R1 and _R2 files represent sequencing reads from the same fragments. This
-means that we have 6 biological samples, and 12 actual files representing those
-samples.
-
-1. Create a new directory in `samples/` called `subsampled_files/`
-
-2. Using `cp`, make all of these files available in your `subsampled_files/`
-directory
-
-2. In this same directory, /projectnb/bf528/materials/project-1-rnaseq/, you will
-also find a refs directory. Copy the files contained within to your `refs/`
-directory. Encode their paths in separate params in your `nextflow.config`. 
 
 ## Changes to our environment management strategy and workflow
 
@@ -126,8 +84,8 @@ automatically add to the singularity command when run with the specified profile
 nextflow run main.nf -profile singularity,local
 ```
 
-As always, remember to activate your conda environment containing nextflow and
-nf-test before doing any work.
+As always, remember to activate your conda environment containing nextflow before
+running your pipeline.
 
 ## Docker images for your pipeline
 
@@ -153,8 +111,7 @@ in bash through the use of wildcard expansion (*).
 1. In the `nextflow.config`, specify a parameter called `reads` that encodes the
 path to your fastq files and uses * to flexibly detect the sample name associated
 with both paired files. Refer to the nextflow documentation [here](https://www.nextflow.io/docs/latest/reference/channel.html#fromfilepairs)
-
-2. Change explanation of where to encode path with *
+Our files are located at /projectnb/bf528/materials/project_2_rnaseq/subsampled_files/ for the subsampled files and /projectnb/bf528/materials/project_2_rnaseq/full_files/ for the full files.
 
 2. In your workflow `main.nf`, use the `Channel.fromFilePairs` function and the
 param you created in step 1 to create a channel called `align_ch`. You'll notice
@@ -165,7 +122,7 @@ associated with that sample.
 ```
 align_ch
 
-[sample1, [sample1_R1.fastq.gz, sample1_R2.fastq.gz](#sample1-sample1-r1fastqgz-sample1-r2fastqgz)]
+[sample1, [sample1_R1.fastq.gz, sample1_R2.fastq.gz]]
 ```
 
 3. In your workflow `main.nf` create another channel using the exact logic from
@@ -180,8 +137,8 @@ associated file. This will look something like below:
 ```
 fastqc_channel
 
-[sample1, sample1_R1.fastq.gz](#sample1-sample1-r1fastqgz)
-[sample1, sample1_R2.fastq.gz](#sample1-sample1-r2fastqgz)
+[sample1, sample1_R1.fastq.gz]
+[sample1, sample1_R2.fastq.gz]
 ```
 
 ## Performing Quality Control
@@ -189,8 +146,6 @@ fastqc_channel
 At this point, you should have: 
 
 - Setup a directory for this project by accepting the github classroom link
-
-- Copied the subsampled files to your working directory, `samples/`
 
 - Familiarized yourself with the changes to environment management and how to run
 nextflow using containers
@@ -203,30 +158,6 @@ the experiment. fastQC is a bioinformatics software tool that calculates and
 generates descriptive graphics of the various quality metrics encoded in a FASTQ
 file. We will use this tool to quickly check the basic quality of the sequencing
 in this experiment.
-
-1. In your envs/ directory, make a YML specification file to create a conda 
-environment with the latest version of FASTQC installed. Use the same command
-as last week to generate a new environment with just fastqc installed:
-
-```
-conda env create -f envs/test_env.yml
-```
-
-2. Activate this new environment after it's created, and navigate to the `temp/`
-directory. You can view the help information for FASTQC by calling the program
-in a terminal with `fastqc -h` or for some programs `fastqc --help`. Try to 
-run FASTQC on the provided fastq file.
-
-By default, FASTQC will create two output files from a single input named as 
-seen below:
-
-```
-fastqc sample1.fastq.gz
-
-Outputs:
-sample1_fastqc.html
-sample1_fastqc.zip
-```
 
 3. Make a new process for fastqc in the `modules/` directory. Be sure to specify
 the following in your module:
@@ -533,7 +464,7 @@ for the `.zip` file created by FastQC.
 multiqc_channel
 
 [sample1_R1_fastqc.zip, sample1_R2_fastqc.zip, sample1.Log.final.out,
-sample2_R1_fastqc.zip, sample2_R2_fastqc.zip, sample2.Log.final.out, ...](#sample1-r1-fastqczip-sample1-r2-fastqczip-sample1logfinalout-sample2-r1-fastqczip-sample2-r2-fastqczip-sample2logfinalout)
+sample2_R1_fastqc.zip, sample2_R2_fastqc.zip, sample2.Log.final.out, ...]
 
 ```
 

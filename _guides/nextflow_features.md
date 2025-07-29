@@ -262,6 +262,48 @@ users. Also, keep in mind that requesting nodes with more resources will likely 
 the amount of time our jobs spend in the queue before they begin running as there are less
 nodes available with these resources and they are in high demand. 
 
+## $task.cpus
+
+Remember that we have several layers to our resource requests. 
+
+1. We must request the appropriate amount of resources in nextflow.
+    - We accomplish this with the `label` found in both the process and the nextflow.config file.
+    - Each process should have a label and the nextflow.config file should define the resources for that label.
+
+2. We must ensure that the tool is instructed to use the appropriate amount of resources.
+    - We accomplish this with the `$task.cpus` variable in the shell script.
+    - Check each tool's documentation for how to specify how many resources the process should use.
+
+We will most often by using multiple cores or cpus to accelerate our computational
+processes. 
+
+Remember that you need to match the amount you request via qsub with the amount
+you instruct the program to utilize in the shell script. 
+
+You may use the `$task.cpus` variable in the shell script to access the values
+assigned in the nextflow.config file. Note in the following example that several
+directives are missing for clarity. 
+
+```bash
+#!/usr/bin/env nextflow
+
+process ALIGN {
+    label 'process_high'
+
+    script:
+    """
+    STAR --runThreadN $task.cpus <other directives>
+    """
+}
+```
+
+At runtime, nextflow will replace the `$task.cpus` variable with the value assigned
+in the nextflow.config file, specifically the value in the process_high label under
+the "cpus" directive. 
+
+You can specify memory in a similar way by setting the memory directive under a
+label in the nextflow.config file. 
+
 ## String interpolation
 
 Nextflow allows for string interpolation using the `${}` syntax. This allows us to 
