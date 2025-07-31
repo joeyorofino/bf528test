@@ -333,9 +333,11 @@ process ALIGN {
 ```
 
 You can see that we are using the `${meta}` variable to specify the sample name in the output 
-file name. This value is the first element of the tuple passed in the input channel and is typically
-the name or identifier of the sample. This is a common pattern in nextflow and allows us to dynamically
-generate file names based on the name passed in the input channel tuple.
+file name. The file generated will have the value of meta substituted in the file name
+and end with `.Aligned.out.bam`. This value is the first element of the tuple passed 
+in the input channel and is typically the name or identifier of the sample. This
+is a common pattern in nextflow and allows us to dynamically generate file names based
+on the name passed in the input channel tuple.
 
 ### String functions (.baseName)
 
