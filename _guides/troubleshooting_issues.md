@@ -175,3 +175,12 @@ on the use of LLMs, your reports must be entirely your own work. Please also
 keep in mind that LLMs are not yet adept at many bioinformatics tasks and in general
 should always be double-checked by a human.
 
+1. A quick google search of the error message
+
+2. A search through the issues section of the GitHub repository for the tool you are using
+
+3. BioStars - a stack overflow-like forum for bioinformatics
+
+4. LLMs - ChatGPT, Claude, etc.
+
+5. The TAs and me
