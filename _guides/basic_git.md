@@ -87,7 +87,7 @@ what files have been modified, what files have been staged, and what files
 have not been staged. If you're ever unsure of what's going on, you can always
 run `git status` to see what's happening.
 
-![git_status](../assets/images/git_status.png)
+![git_status]({{ site.baseurl }}/assets/images/git_status.png)
 
 If you look at the above example, I'll point out a few basic things to note:
 
@@ -102,7 +102,7 @@ If you look at the above example, I'll point out a few basic things to note:
 files that have changes that have not been recorded since the last commit. A
 git add command would stage these files to be committed. 
 
-![git_add](../assets/images/git_add.png)
+![git_add]({{ site.baseurl }}/assets/images/git_add.png)
 
 
 ### git commit
@@ -124,7 +124,7 @@ For example, continuing with the the above example, my git commit may look like:
 git commit -m 'added conda and basic git guide, edited troubleshooting'
 ```
 
-![git_commit](../assets/images/git_commit.png)
+![git_commit]({{ site.baseurl }}/assets/images/git_commit.png)
 
 ### git push
 
@@ -132,7 +132,7 @@ git commit -m 'added conda and basic git guide, edited troubleshooting'
 update the remote repository with your changes. At this point in our working 
 example, our changes are only recorded in our local repository. 
 
-![git_push](../assets/images/git_push.png)
+![git_push]({{ site.baseurl }}/assets/images/git_push.png)
 
 After you've pushed to your remote repository, you can view your changes on GitHub
 by simply navigating to your repository via browser. 
