@@ -3,7 +3,7 @@ title: "Conda"
 layout: single
 ---
 
-# Conda
+# Overview
 
 Conda is a package manager and environment manager that allows you to manage 
 your packages and environments. Conda enables you to create isolated environments
@@ -19,8 +19,8 @@ so that others can easily install them.
 
 In bioinformatics, there are two main channels we will be utilizing:
 
-1. Conda-forge
-2. Bioconda
+1. conda-forge
+2. bioconda
 
 You will often need to specify these channels when installing bioinformatics
 packages via conda to prevent conflicts with other packages or dependencies. 
@@ -41,8 +41,8 @@ whenever you are working on the SCC.
 
 # Basic Conda Workflow on the SCC (we will not often use this)
 
-Although I have used the term conda, we will actually be using miniconda on the SCC.
-Miniconda is a stripped-down version of anaconda that only includes the basic functionality
+Although I have used the term conda, we will actually be using *miniconda* on the SCC.
+Miniconda is a stripped-down version of anaconda/conda that only includes the basic functionality
 we need to manage our environments. Miniconda on the SCC is available via a module.
 
 The basic workflow for using miniconda is as follows:

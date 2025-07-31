@@ -102,6 +102,14 @@ If you look at the above example, I'll point out a few basic things to note:
 files that have changes that have not been recorded since the last commit. A
 git add command would stage these files to be committed. 
 
+`git add _guides/basic_git.md` would stage the basic git guide to be committed.
+`git add _guides/conda_guide.md` would stage the conda guide to be committed.
+`git add _guides/troubleshooting_issues.md` would stage the troubleshooting issues guide to be committed.
+
+Although you can use `git add <file>` to stage individual files, you can also use
+`git add .` to stage all files in the current directory. Use this with caution as it
+may stage files you may not have intended. 
+
 ![git_add]({{ site.baseurl }}/assets/images/git_add.png)
 
 
@@ -178,3 +186,37 @@ of tools for this purpose.
 In addition, you can think of Git and GitHub as a more robust way to save your
 work. Although a side benefit, this can often be a lifesaver when you're working
 on a project and something goes wrong or you need to revert to a previous version.
+
+**N.B.** We will only be using Git and Github to manage code and small files. 
+The git algorithm is not designed to handle large files or data, and attempting
+to commit and push large files or data to a remote repository can lead to errors.
+You should only commit code and small files to your remote repository, and use
+other methods to manage your source data or large files.
+
+### .gitignore
+
+A .gitignore is a file located in the root of your repository that tells git which
+files to ignore. This is useful for ignoring files that you don't want to commit
+or push to your remote repository. Git will not track these files or suggest them
+for staging or committing. Although you will often be provided a .gitignore file
+by your instructor or by a template, you can also create your own .gitignore file as
+they are simply text files. 
+
+A .gitignore file may look something like this:
+
+```yml
+# ignore all files in the results directory
+results/
+
+# ignore all files ending in .fastq
+*.fastq
+
+# ignore system-specific files
+.DS_Store
+```
+
+In the above example, we ignore all files in the results directory, all files 
+ending in .fastq, and all system-specific files. You can then add this .gitignore 
+file to your repository and git will ignore the files listed in the .gitignore file. 
+.gitignore files are useful for preventing you from committing and pushing files
+by accident.  
