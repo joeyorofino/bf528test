@@ -52,7 +52,7 @@ sidebar:
       - title: "Final Project"
         url: "/projects/final_project/"
       - title: "Project Report Guidelines"
-        url: "/projects/project_report_guidelines
+        url: "/projects/project_report_guidelines/"
 
   - title: "Course Lectures"
     children:
