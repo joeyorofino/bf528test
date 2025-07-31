@@ -26,7 +26,7 @@ and allow you to "save" the state of your code at a particular point in time.
 
 This is useful for both iteration and collaboration as you can have no fear altering
 your codebase when developing and easily share your code with others when you 
-are ready to. 
+are ready to by directly sharing the repository URL with others. 
 
 You can think of this as akin to "saving" a word document, but instead of overwriting
 your previous document, git will let you keep track of every incremental change 
@@ -63,9 +63,8 @@ creating a remote repository on GitHub. After you have run `git init`, you can
 use the GitHub website to create a new repository and follow the instructions
 to link your local repository to the remote repository on GitHub. 
 
-If you navigate to the directory of your codebase, the process of initializing a
-new git repository and creating a remote repository on GitHub will often look 
-something like:
+This process will look something like below assuming you have already created a
+remote repository on GitHub (it will tell you the remote repository URL to use):
 
 ```bash
 git init
