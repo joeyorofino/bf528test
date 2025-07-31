@@ -3,23 +3,7 @@ title: "Project Writeup Instructions"
 layout: single
 ---
 
----
----
-
-Your reports should be focused on describing what *you* did and any relevant
-background. The purpose of our projects is to attempt to reproduce the findings
-in a published manuscript. You do not need to restate any of the methods from
-the paper itself; only what you yourself did in pursuit of reproducibility. The
-introduction should include a brief discussion summarizing the premise of the 
-original study, just to give the reader enough context to understand the results.
-
-Projects are due by adding and pushing your report document to your github
-repos **prior to the start of class on the day the project is due!** The project
-will be discussed on the due date, so no late assignments can be accepted. If
-you have trouble pushing the document, you may email it to the instructor and
-your TA instead.
-
-## Report Guidelines
+# Report Guidelines
 
 Your reports will be assessed in six areas:
 
@@ -28,11 +12,27 @@ Your reports will be assessed in six areas:
 - [Figure & Table Quality](#figure-table-quality)
 - [Clarity of Language](#clarity-of-language)
 - [Thoroughness](#thoroughness)
-- [Cohesion & Coherence](#cohesion-coherence)
 
 You will be provided with detailed feedback on each of your reports with
 specific comments on each of these areas. Your final grade will be assigned
 based on how well you respond to the comments for your projects overall.
+
+Your report will consist of 6 sections:
+
+1. Introduction
+2. Methods
+3. Deliverables
+4. Future Directions
+5. Conclusion
+6. References
+
+The bulk of the content will be the deliverables you are asked to produce. These
+will often be reproductions of figures from the original paper, or tables of
+results. 
+
+The introduction, future directions and conclusions are meant to provide context
+and interpretation of the results as well as demonstrate why the publication was
+important and novel.
 
 ## FAQ
 
@@ -69,13 +69,13 @@ of what specifically we will be looking for.
 
 Each of these sections should be included in your report.
 
-### Introduction
+### Introduction (1 paragraph)
 
 - What is the biological background of the study?
 - Why was the study performed?
 - Why did the authors use the bioinformatic techniques they did?
 
-### Methods
+### Methods (as long as needed)
 
 The methods section should concisely describe which steps were taken in the
 analysis of the data.
@@ -93,28 +93,9 @@ analysis of the data.
 - How was the analysis run? How long did it take? What computational resources
   were required?
 
-### Results
+### Deliverables
 
-The results section presents the primary findings of the study. This should
-generally be a simple description of the results, and all discussion and
-interpretation should be reserved for the Discussion section.
 
-- Results from each step in the methods section
-- If something failed, explain why you think this happened and suggest
-  alternatives or fixes
-- Figures and/or tables describing your results, with descriptive captions
-
-### Discussion
-
-Discuss and interpret the results in the larger biological context of the
-study. Begin with a brief restatement of the primary results, followed by
-any interpretations and conclusions drawn.
-
-- Briefly summarize the overall method and main findings
-- What are the implications of your main findings?
-- What biological interpretation do the findings suggest?
-- Were you able to reproduce the result from the original paper? If not, why
-  not?
   
 ### Future Directions
 
@@ -125,15 +106,6 @@ to extend, follow-up or expand the scope of the original study.
 to address
 - Why are these questions interesting? Why would the answers to these questions
 be relevant?
-
-### Challenges
-
-Let's reflect on which aspects of the project were difficult. For this section
-only, you may drop the standard tone and style of a publication and write in the
-1st person
-
-- What were the main difficulties you encountered in the project?
-  - These can be computational, biological, or procedural in nature
 
 ### Conclusion
 
@@ -242,31 +214,6 @@ additional information, feel free to include it as a supplemental figure.
 - Poor choice of color scheme
 - Information obscured by legends or other information
 - Unreadable text
-
-#### Examples
-
-Unlabeled axes and a bit too much detail in the caption:
-
-![Unlabeled axes and too much caption detail](projects/guidelines/figure_1.png)
-
-Text shrunk to the point of being unreadable.  The gene names (right y axis of
-the right image) could have been cut and replaced with a simpler, general axis
-title.  There is no legend to indicate what color is high in the heatmap:
-
-![Illegible text](projects/guidelines/figure_2.png)
-
-If something looks like this, put it in a table:
-
-[Use a table](projects/guidelines/figure_3.png)
-
-Good use of a figure to explain a method central to the report.  More detail or
-formatting besides the cut and paste would be welcome though:
-
-[Figure copied from another website](projects/guidelines/figure_4.png)
-
-Clear use of extra time to make every inch of the figure useful:
-
-[Great figure example](projects/guidelines/figure_5.png)
 
 ### Clarity of Language
 
@@ -602,20 +549,3 @@ Rewritten:
     Paired end FASTQ files were aligned against the mm9 reference genome with
     Bowtie2[6](#6), followed by spliced alignment with Tophat[citation needed](#citation-needed).
     Alignment statistics were calculated using samtools.
-
-### Cohesion & Coherence
-
-A cohesive document is consistent in all aspects throughout. This includes not
-only formatting, but also grammatical features like tense, voice, and tone, and
-stylistic characteristics where sentences, clauses, and ideas flow from one to
-the next. Although many published manuscripts have sections that are written by
-different people, articles typically (or should) sound as if they were written
-by one person. Consistency throughout the document makes it easier to read and
-understand. Beyond consistency of an entire document, cohesive writing flows
-from sentence to sentence in a logical progression that aids the reader in
-comprehension. Each sentence or clause should follow logically from the one
-that came before, and set up the reader for the next to come.
-
-Cohesion and coherence are some of the most difficult writing concepts to
-master. For more detailed description and discussion of cohesion and coherence,
-see [this excellent post](https://writing.chalmers.se/chalmers-writing-guide/writing-a-text/coherence-cohesion/)
